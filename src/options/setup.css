@@ -265,7 +265,7 @@ body {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1.5rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -309,6 +309,7 @@ body {
 
 .field-meta {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.9rem;
@@ -367,8 +368,8 @@ body {
 /* Field Preview */
 .field-preview {
   margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
+  /* padding-top: 1.5rem; */
+  /* border-top: 1px solid var(--border-color); */
 }
 
 .field-preview label {
