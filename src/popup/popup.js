@@ -1,3 +1,3 @@
-document.getElementById("add-or-update").addEventListener("click", () => {
+document.getElementById("addUpdateBtn").addEventListener("click", () => {
   chrome.runtime.openOptionsPage();
 });
