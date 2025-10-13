@@ -4,19 +4,8 @@ chrome.storage.local.get(["fields"], (result) => {
 
   fields.forEach((field) => {
     inputs.forEach((input) => {
-      const label = field.label.toLowerCase();
-      const id = input.id.toLowerCase();
-      const name = input.name.toLowerCase();
-      const type = input.type.toLowerCase();
-      const placeholder = input.placeholder.toLowerCase();
-
-      if (
-        id === label ||
-        name === label ||
-        type === label ||
-        placeholder === label
-      ) {
-        input.value = field.value;
+      if (matchInput(input, field.label)) {
+        fillInput(input, field.value);
       }
     });
   });
