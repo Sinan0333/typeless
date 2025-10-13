@@ -8,11 +8,7 @@
     "48": "assets/icons/icon48.png",
     "128": "assets/icons/icon128.png"
   },
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
+  "permissions": ["storage", "activeTab", "scripting"],
   "background": {
     "service_worker": "src/background/background.js"
   },
@@ -24,8 +20,13 @@
       "128": "assets/icons/icon128.png"
     }
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/helpers.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "options_page": "src/options/setup.html",
-  "host_permissions": [
-    "<all_urls>"
-  ]
+  "host_permissions": ["<all_urls>"]
 }
