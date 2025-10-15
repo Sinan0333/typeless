@@ -12,17 +12,14 @@ class TypeLessSetup {
   }
 
   addEventListeners() {
-    // Back button
     document.getElementById("backBtn").addEventListener("click", () => {
       window.history.back();
     });
 
-    // Add field button
     document.getElementById("addFieldBtn").addEventListener("click", () => {
       this.openFieldModal();
     });
 
-    // Modal close events
     document.getElementById("closeModal").addEventListener("click", () => {
       this.closeFieldModal();
     });
@@ -31,26 +28,18 @@ class TypeLessSetup {
       this.closeFieldModal();
     });
 
-    // Click outside modal to close
     document.getElementById("fieldModal").addEventListener("click", (e) => {
       if (e.target.id === "fieldModal") {
         this.closeFieldModal();
       }
     });
 
-    // Field configuration form
     document
       .getElementById("fieldConfigForm")
       .addEventListener("submit", (e) => {
         this.handleFieldSubmit(e);
       });
 
-    // Save configuration button
-    document.getElementById("saveButton").addEventListener("click", () => {
-      this.saveConfiguration();
-    });
-
-    // Escape key to close modal
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         this.closeFieldModal();
@@ -204,38 +193,6 @@ class TypeLessSetup {
     }
   }
 
-  saveConfiguration() {
-    if (this.fields.length === 0) {
-      this.showError("Please add at least one field before saving");
-      return;
-    }
-
-    const saveButton = document.getElementById("saveButton");
-    const buttonText = saveButton.querySelector(".button-text");
-
-    // Show loading state
-    saveButton.disabled = true;
-    saveButton.classList.add("loading");
-    buttonText.textContent = "Saving...";
-
-    // Simulate save process
-    setTimeout(() => {
-      this.saveFieldsToStorage();
-      this.showConfigSuccess();
-
-      // Reset button state
-      saveButton.disabled = false;
-      saveButton.classList.remove("loading");
-      buttonText.textContent = "Configuration Saved!";
-      saveButton.style.background = "var(--success)";
-
-      setTimeout(() => {
-        buttonText.textContent = "Save Configuration";
-        saveButton.style.background = "";
-      }, 3000);
-    }, 1500);
-  }
-
   saveFieldsToStorage() {
     try {
       // localStorage.setItem("typelessFields", JSON.stringify(this.fields));
@@ -285,18 +242,15 @@ class TypeLessSetup {
   }
 
   showMessage(message, type = "success") {
-    // Remove any existing messages
     const existingMessage = document.querySelector(".form-message");
     if (existingMessage) {
       existingMessage.remove();
     }
 
-    // Create message element
     const messageElement = document.createElement("div");
     messageElement.className = `form-message form-${type}`;
     messageElement.textContent = message;
 
-    // Add styles for error messages
     if (type === "error") {
       messageElement.style.background = "var(--error)";
     }
@@ -304,7 +258,6 @@ class TypeLessSetup {
     const container = document.querySelector(".container");
     container.insertBefore(messageElement, container.firstChild);
 
-    // Remove message after 5 seconds
     setTimeout(() => {
       if (messageElement.parentNode) {
         messageElement.remove();
@@ -317,57 +270,12 @@ class TypeLessSetup {
     div.textContent = text;
     return div.innerHTML;
   }
-
-  // Export configuration for debugging/backup
-  exportConfiguration() {
-    const config = {
-      fields: this.fields,
-      exportDate: new Date().toISOString(),
-      version: "1.0",
-    };
-
-    const blob = new Blob([JSON.stringify(config, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "typeless-config.json";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  // Import configuration
-  importConfiguration(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const config = JSON.parse(e.target.result);
-        if (config.fields && Array.isArray(config.fields)) {
-          this.fields = config.fields;
-          this.renderFields();
-          this.saveFieldsToStorage();
-          this.showMessage(
-            "✅ Configuration imported successfully!",
-            "success"
-          );
-        } else {
-          this.showError("Invalid configuration file format");
-        }
-      } catch (error) {
-        this.showError("Error importing configuration: " + error.message);
-      }
-    };
-    reader.readAsText(file);
-  }
 }
 
-// Initialize the setup page when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   window.typeLessSetup = new TypeLessSetup();
 });
 
-// Add entrance animation
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container");
   container.style.opacity = "0";
