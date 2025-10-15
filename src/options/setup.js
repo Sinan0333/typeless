@@ -14,7 +14,7 @@ class TypeLessSetup {
   addEventListeners() {
     // Back button
     document.getElementById("backBtn").addEventListener("click", () => {
-      window.location.href = "index.html";
+      window.history.back();
     });
 
     // Add field button
