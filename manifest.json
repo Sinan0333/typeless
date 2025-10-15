@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "Fill forms instantly with your saved details. Save time and skip repetitive typing!",
   "icons": {
-    "16": "assets/icons/icon16.png",
-    "48": "assets/icons/icon48.png",
-    "128": "assets/icons/icon128.png"
+    "16": "assets/logos/logo16.png",
+    "48": "assets/logos/logo48.png",
+    "128": "assets/logos/logo128.png"
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "background": {
@@ -15,9 +15,9 @@
   "action": {
     "default_popup": "src/popup/popup.html",
     "default_icon": {
-      "16": "assets/icons/icon16.png",
-      "48": "assets/icons/icon48.png",
-      "128": "assets/icons/icon128.png"
+      "16": "assets/logos/logo16.png",
+      "48": "assets/logos/logo48.png",
+      "128": "assets/logos/logo128.png"
     }
   },
   "content_scripts": [
