@@ -13,7 +13,7 @@ class TypeLessSetup {
 
   addEventListeners() {
     document.getElementById("backBtn").addEventListener("click", () => {
-      window.history.back();
+      window.close();
     });
 
     document.getElementById("addFieldBtn").addEventListener("click", () => {
