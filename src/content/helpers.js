@@ -22,3 +22,24 @@ function matchInput(input, label) {
     placeholder === labelLower
   );
 }
+
+function getFieldMeaning(text) {
+  if (!text) return null;
+  const normalized = text.toLowerCase();
+
+  const mappings = {
+    email: ["email", "mail", "e-mail"],
+    name: ["name", "fullname", "full_name", "user name", "username"],
+    phone: ["phone", "mobile", "cell", "contact number"],
+    address: ["address", "street", "location"],
+    city: ["city", "town"],
+    zip: ["zip", "postal", "postcode"],
+    password: ["password", "passcode", "pwd"],
+  };
+
+  for (const [key, words] of Object.entries(mappings)) {
+    if (words.some((w) => normalized.includes(w))) return key;
+  }
+
+  return "unknown";
+}
