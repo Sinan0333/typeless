@@ -9,6 +9,15 @@
     "128": "assets/logos/logo128.png"
   },
   "permissions": ["storage", "activeTab", "scripting"],
+  "commands": {
+    "fill_form": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Fill form fields"
+    }
+  },
   "background": {
     "service_worker": "src/background/background.js"
   },
