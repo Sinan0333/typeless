@@ -267,9 +267,24 @@ body {
   font-size: 0.95rem;
 }
 
+.shortcut {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.shortcut a {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+.shortcut a:hover {
+  text-decoration: underline;
+}
+
 .footer {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
 }
