@@ -1,7 +1,9 @@
 chrome.storage.local.get(["fields"], (result) => {
   const fields = result.fields || [];
   const fieldLabels = fields.map((f) => f.label.toLowerCase());
-  const inputs = document.querySelectorAll("input");
+  const inputs = document.querySelectorAll(
+    'input:not([type="hidden"]):not([type="file"]), textarea, select, [contenteditable="true"], [role="textbox"]'
+  );
 
   const fuse = new Fuse(fieldLabels, {
     includeScore: true,
